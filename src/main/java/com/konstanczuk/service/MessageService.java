@@ -27,8 +27,7 @@ public class MessageService {
   }
 
   public Message saveMessage(Message message) {
-    messageRepository.save(message);
-    daleteOldMessages(message);
+    messageRepository.save(message, 300);
     return message;
   }
 
@@ -72,7 +71,4 @@ public class MessageService {
     return Session.getDefaultInstance(properties);
   }
 
-  private void daleteOldMessages(Message message){
-    messageRepository.delete(message);
-  }
 }
