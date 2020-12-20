@@ -2,16 +2,16 @@ package com.konstanczuk.repository;
 
 import com.konstanczuk.dto.Message;
 import java.util.List;
-import java.util.Optional;
-import org.springframework.data.cassandra.repository.CassandraRepository;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface MessageRepository extends CassandraRepository<Message, String>, CustomizedSave<Message> {
+public interface MessageRepository {
 
-  Optional<Slice<Message>> findAllByEmail(String email, Pageable pageable);
+  void save(Message message);
 
-  Optional<List<Message>> findAllByMagicNumber(Integer magicNumber);
+  List<Message> findAllByMagicNumber(String magicNumber);
+
+  List<Message> findAllByEmail(String email);
+
+  void remove(Message message);
+
+  void removeAll();
 }
