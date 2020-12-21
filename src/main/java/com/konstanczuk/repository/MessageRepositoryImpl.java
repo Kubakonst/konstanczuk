@@ -36,7 +36,7 @@ public class MessageRepositoryImpl implements MessageRepository {
   public List<Message> findAllByMagicNumber(String magicNumber) {
     List<Message> messages = new ArrayList<>();
     String cqlStatement =
-        "SELECT * FROM test.message where magicnumber= '" + magicNumber + "' ALLOW FILTERING;";
+        "SELECT * FROM test.message where magicnumber= '" + magicNumber + "';";
     ResultSet rs = cassandraConfigSession.session().execute(cqlStatement);
     for (Row row : rs) {
       Message message =
@@ -54,7 +54,7 @@ public class MessageRepositoryImpl implements MessageRepository {
   public List<Message> findAllByEmail(String email) {
     List<Message> messages = new ArrayList<>();
     String cqlStatement =
-        "SELECT * FROM test.message where emial= '" + email + "' ALLOW FILTERING;";
+        "SELECT * FROM test.message where emial= '" + email + "';";
     ResultSet rs = cassandraConfigSession.session().execute(cqlStatement);
     for (Row row : rs) {
       Message message =

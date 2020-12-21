@@ -21,7 +21,7 @@ public class MessageService {
   }
 
   public Message saveMessage(Message message) {
-    if (message.getUuid().isEmpty()) {
+    if (message.getUuid().equals("Empty uuid")) {
       message.setUuid(UUID.randomUUID().toString());
     }
     messageRepository.save(message);
